@@ -1,0 +1,271 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Polygon Quotes API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/quotes": {
+            "get": {
+                "tags": [
+                    "Quotes"
+                ],
+                "summary": "Get quotes data",
+                "operationId": "4d3d7fbebfc2d9ade65463dfdf630651",
+                "parameters": [
+                    {
+                        "name": "ticker",
+                        "in": "query",
+                        "description": "The name of the ticker",
+                        "schema": {
+                            "type": "string",
+                            "default": "NVDA"
+                        }
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Fixed date"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "Start date of the date range",
+                        "schema": {
+                            "type": "string",
+                            "example": "2024-01-01"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "End date of the date range",
+                        "schema": {
+                            "type": "string",
+                            "example": "2024-11-30"
+                        }
+                    },
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Date period",
+                        "schema": {
+                            "type": "string",
+                            "example": "year"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "ticker": {
+                                                        "type": "string",
+                                                        "example": "NVDA"
+                                                    },
+                                                    "date": {
+                                                        "type": "string",
+                                                        "example": "2022-11-02T00:00:00.000000Z"
+                                                    },
+                                                    "open": {
+                                                        "type": "integer",
+                                                        "example": 13.85
+                                                    },
+                                                    "high": {
+                                                        "type": "integer",
+                                                        "example": 14.21
+                                                    },
+                                                    "low": {
+                                                        "type": "integer",
+                                                        "example": 13.21
+                                                    },
+                                                    "close": {
+                                                        "type": "integer",
+                                                        "example": 13.22
+                                                    },
+                                                    "volume": {
+                                                        "type": "integer",
+                                                        "example": 672627840
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2024-11-01T09:16:06.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2024-11-01T09:16:06.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/polygon-quotes": {
+            "get": {
+                "tags": [
+                    "Polygon Quotes"
+                ],
+                "summary": "Get polygon quotes",
+                "operationId": "c2a262d0a3af05ac56644853b699e9c0",
+                "parameters": [
+                    {
+                        "name": "ticker",
+                        "in": "query",
+                        "description": "The name of the ticker",
+                        "schema": {
+                            "type": "string",
+                            "default": "NVDA"
+                        }
+                    },
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Date period",
+                        "schema": {
+                            "type": "string",
+                            "default": "year"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "null"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "t": {
+                                                        "type": "integer",
+                                                        "example": 1672549200000
+                                                    },
+                                                    "vw": {
+                                                        "type": "integer",
+                                                        "example": 36.4972
+                                                    },
+                                                    "o": {
+                                                        "type": "integer",
+                                                        "example": 14.851
+                                                    },
+                                                    "n": {
+                                                        "type": "integer",
+                                                        "example": 148640502
+                                                    },
+                                                    "h": {
+                                                        "type": "integer",
+                                                        "example": 14.21
+                                                    },
+                                                    "l": {
+                                                        "type": "integer",
+                                                        "example": 13.21
+                                                    },
+                                                    "c": {
+                                                        "type": "integer",
+                                                        "example": 13.22
+                                                    },
+                                                    "v": {
+                                                        "type": "integer",
+                                                        "example": 672627840
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/quotes/history": {
+            "post": {
+                "tags": [
+                    "Quotes"
+                ],
+                "summary": "Get polygon quotes",
+                "operationId": "3c8a8cb1d9d51accbd21978b5cfdc802",
+                "parameters": [
+                    {
+                        "name": "ticker",
+                        "in": "query",
+                        "description": "The name of the ticker",
+                        "schema": {
+                            "type": "string",
+                            "default": "NVDA"
+                        }
+                    },
+                    {
+                        "name": "years",
+                        "in": "query",
+                        "description": "Years count",
+                        "schema": {
+                            "type": "integer",
+                            "default": "2"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Quotes",
+            "description": "Quotes"
+        },
+        {
+            "name": "Polygon Quotes",
+            "description": "Polygon Quotes"
+        }
+    ]
+}
